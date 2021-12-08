@@ -38,11 +38,10 @@ void wdt_c_handler(){
     clockCount = 0;
   }
   if(clockCount >= 63 && oddPress3 == 1){
-    buzzer_set_period(0);
     redrawScreen = 1;
     clockCount = 0;
   }
-  if(clockCount >= 63 && oddPress4 == 1){
+  if(clockCount >= 126 && oddPress4 == 1){
     buzzer_set_period(0);
     redrawScreen = 1;
     clockCount = 0;
@@ -80,11 +79,14 @@ int main(void) {
       //button3 TODO FIGURE OUT BUTTON 3 move up?
       else if(oddPress3){
 	playSong();
+	drawString11x16(12, 125,"GANG-STAR", COLOR_YELLOW, COLOR_BLACK);
+	drawPiggy(startC, startR);
       }
       //button4 show message 
       else if(oddPress4){
-	drawString5x7(10, 20, "Thanks Link! You're\nthe hero of\nHyrule.", COLOR_RED, COLOR_BLACK);
-	drawTriForce(startC, startR);
+	drawTriForce(65, screenHeight /2);
+	drawString11x16(8,15, "Hero of ", COLOR_RED, COLOR_BLACK);
+	drawString11x16(8, 32, "Hyrule", COLOR_RED, COLOR_BLACK);
       }
       redrawScreen = 0;
     } // end of if redraw

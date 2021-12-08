@@ -139,3 +139,48 @@ void drawRectOutline(u_char colMin, u_char rowMin, u_char width, u_char height,
   fillRectangle(colMin, rowMin, 1, height, colorBGR);
   fillRectangle(colMin + width, rowMin, 1, height, colorBGR);
 }
+void drawPiggy(u_char beginCol, u_char beginRow){
+  clearScreen(COLOR_HOT_PINK);
+  u_char colS = 60;
+  u_char rowS = 60;
+  
+  //eyes
+  for(short col = 0; col <= 15; col++){
+    for(short row = 0; row <= 15; row++){
+      drawPixel((beginCol-15)+ col,(beginRow - 25)+ row, COLOR_WHITE);
+    }
+  }
+  for(short col = 0; col <= 15; col++){
+    for(short row = 0; row <= 15; row++){
+      drawPixel((beginCol+60)+col,(beginRow-25)+row,COLOR_WHITE);
+    }
+  }
+  for(short col =0; col <= 15; col++){
+    for(short row =0; row <= 15; row++){
+      drawPixel((beginCol-30)+col,(beginRow-25)+row,COLOR_BLACK);
+    }
+  }
+  for(short col=0; col<= 15; col++){
+    for(short row=0; row<=15; row++){
+      drawPixel((beginCol+75)+col, (beginRow-25)+row, COLOR_BLACK);
+    }
+  }
+  //snout
+  for (short col = 0; col <= colS; col++){
+    for(short row = 5; row <= rowS-5; row++){
+      drawPixel(beginCol + col, beginRow + row, COLOR_PINK);
+    }
+  }
+
+  for(short col = 0; col <= colS * .25; col++){
+    for(short row =15; row <= rowS * .25 + 15; row++){
+      drawPixel(beginCol + col + (colS * .125), beginRow + row + (rowS * .125), COLOR_BLACK);
+    }
+  }
+
+  for(short col = 0; col <= colS * .25; col++){
+    for (short row = 15; row <= rowS * .25 + 15; row++){
+      drawPixel(beginCol + col + (colS * .625), beginRow + row + (rowS * .125), COLOR_BLACK);
+    }
+  }
+}
